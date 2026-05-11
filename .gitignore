@@ -4,3 +4,7 @@ Thumbs.db
 *.swo
 .idea/
 .vscode/
+
+# PDFs individuales: se regeneran con `python -m scraper.main build-pdfs`.
+# Solo commiteamos los ZIPs (servidos desde marcas/{slug}.zip).
+versiones/*.pdf

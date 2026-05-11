@@ -57,7 +57,26 @@ footer {
   font-size: 28px; font-weight: 700; margin: 12px 0 4px;
 }
 .hero .hero-sub { color: var(--fg-muted); font-weight: 500; }
-.hero .lead { color: var(--fg-muted); margin: 0 0 20px; }
+.hero .lead { color: var(--fg-muted); margin: 0 0 16px; }
+
+/* Botón de descarga masiva (página de marca) */
+.download-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent); color: white !important;
+  padding: 10px 16px; border-radius: var(--radius);
+  font-weight: 600; font-size: 14px;
+  text-decoration: none !important;
+  margin-bottom: 24px;
+  transition: background 0.12s, transform 0.06s;
+}
+.download-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.download-btn:active { transform: translateY(0); }
+.download-btn .download-icon { font-size: 16px; line-height: 1; }
+.download-btn .download-size {
+  background: rgba(255,255,255,0.18);
+  padding: 2px 8px; border-radius: 999px; font-size: 12px;
+  font-weight: 500;
+}
 
 /* Card grid (marcas / modelos) */
 .marca-grid {
