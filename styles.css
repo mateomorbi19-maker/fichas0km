@@ -1,0 +1,156 @@
+:root {
+  --fg: #1a1a1a;
+  --fg-muted: #5a6470;
+  --bg: #ffffff;
+  --bg-alt: #f7f8fa;
+  --border: #e1e4e8;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --max-width: 1080px;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-alt);
+  position: sticky; top: 0; z-index: 10;
+}
+.topbar .brand { font-weight: 600; color: var(--fg); }
+.print-btn {
+  background: var(--accent); color: white; border: 0; cursor: pointer;
+  padding: 8px 14px; border-radius: var(--radius); font: inherit; font-size: 13px;
+}
+.print-btn:hover { background: var(--accent-hover); }
+
+.breadcrumb {
+  max-width: var(--max-width); margin: 0 auto; padding: 12px 24px;
+  font-size: 13px; color: var(--fg-muted);
+}
+.breadcrumb a { color: var(--fg-muted); }
+.breadcrumb a:hover { color: var(--accent); }
+
+main {
+  max-width: var(--max-width); margin: 0 auto; padding: 8px 24px 64px;
+}
+
+footer {
+  max-width: var(--max-width); margin: 40px auto 0; padding: 16px 24px;
+  border-top: 1px solid var(--border); color: var(--fg-muted); font-size: 13px;
+}
+
+/* Hero / heading */
+.hero h1 {
+  font-size: 28px; font-weight: 700; margin: 12px 0 4px;
+}
+.hero .hero-sub { color: var(--fg-muted); font-weight: 500; }
+.hero .lead { color: var(--fg-muted); margin: 0 0 20px; }
+
+/* Card grid (marcas / modelos) */
+.marca-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.card {
+  display: block;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--fg) !important;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.12);
+  text-decoration: none !important;
+}
+.card h3 { margin: 0 0 6px; font-size: 16px; }
+.card .meta { color: var(--fg-muted); font-size: 13px; }
+
+/* Tabla de versiones */
+.table-wrap { overflow-x: auto; }
+.versiones {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+}
+.versiones th, .versiones td {
+  text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border);
+}
+.versiones th {
+  background: var(--bg-alt); font-weight: 600; color: var(--fg-muted);
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em;
+}
+.versiones tbody tr:hover { background: var(--bg-alt); }
+.versiones td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Ficha técnica */
+.ficha-head {
+  border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 28px;
+}
+.ficha-meta { display: flex; gap: 12px; color: var(--fg-muted); font-size: 13px; margin-bottom: 6px; }
+.ficha-meta .marca { font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.ficha-head h1 { font-size: 26px; font-weight: 700; margin: 0 0 12px; line-height: 1.25; }
+.precio {
+  display: inline-block; padding: 6px 14px; background: var(--bg-alt);
+  border-radius: var(--radius); font-weight: 600; font-variant-numeric: tabular-nums;
+}
+
+.ficha-secciones, .equipamiento {
+  display: flex; flex-direction: column; gap: 24px;
+}
+.equipamiento { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+.equipamiento .equip-title { font-size: 13px; text-transform: uppercase; color: var(--fg-muted); letter-spacing: 0.05em; margin-bottom: 8px; }
+
+.spec h2 {
+  font-size: 14px; font-weight: 600;
+  color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.05em;
+  margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+}
+.kv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 24px;
+  margin: 0;
+}
+.kv { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 4px 0; border-bottom: 1px dotted var(--border); }
+.kv dt { color: var(--fg-muted); font-size: 13px; }
+.kv dd { margin: 0; text-align: right; font-size: 14px; max-width: 60%; }
+
+.ficha-foot { margin-top: 32px; font-size: 13px; color: var(--fg-muted); }
+
+/* Print styles */
+@media print {
+  :root { --max-width: 100%; }
+  body { font-size: 11pt; }
+  .no-print { display: none !important; }
+  main { padding: 0; }
+  .ficha-head { page-break-after: avoid; }
+  .spec, .ficha-secciones, .equipamiento { page-break-inside: avoid; }
+  .ficha-head h1 { font-size: 18pt; }
+  .spec h2, .equipamiento .equip-title { font-size: 9pt; }
+  .kv-grid { gap: 2px 18px; }
+  .kv { padding: 2px 0; }
+  .kv dt, .kv dd { font-size: 9.5pt; }
+  a { color: inherit; text-decoration: none; }
+  .precio { background: transparent; padding: 0; border: 1px solid var(--border); }
+}
+
+@media (max-width: 720px) {
+  .kv-grid { grid-template-columns: 1fr; }
+  .ficha-head h1 { font-size: 22px; }
+  .versiones { font-size: 13px; }
+  .versiones th, .versiones td { padding: 8px; }
+}
