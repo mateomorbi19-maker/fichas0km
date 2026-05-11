@@ -3,10 +3,18 @@
 API de solo lectura sobre el catálogo de autos 0km vigentes en Argentina
 (scrapeado de autocosmos.com.ar).
 
+- **Base URL**: `https://fichas0km.teotec.org/api/`
 - **Formato**: JSON (UTF-8, minificado).
 - **CORS**: `Access-Control-Allow-Origin: *` (consumible desde cualquier origen).
+- **Cache**: `Cache-Control: public, max-age=300, must-revalidate` (5 minutos).
 - **Versionado**: cada respuesta incluye `schema_version` y `generated_at` (ISO UTC).
-- **Update**: regenerar con `python -m scraper.main build-api` y `git push`. El sitio se redeploya en EasyPanel.
+
+## Quick test
+
+```bash
+curl https://fichas0km.teotec.org/api/meta.json
+curl https://fichas0km.teotec.org/api/versiones/170292.json
+```
 
 ## Endpoints
 
