@@ -150,21 +150,39 @@ footer {
 
 .ficha-foot { margin-top: 32px; font-size: 13px; color: var(--fg-muted); }
 
-/* Print styles */
+/* Print styles - compactos y sin huecos */
 @media print {
   :root { --max-width: 100%; }
-  body { font-size: 11pt; }
+  @page { margin: 0; }
+  body { font-size: 9.5pt; line-height: 1.35; margin: 0; }
   .no-print { display: none !important; }
   main { padding: 0; }
-  .ficha-head { page-break-after: avoid; }
-  .spec, .ficha-secciones, .equipamiento { page-break-inside: avoid; }
-  .ficha-head h1 { font-size: 18pt; }
-  .spec h2, .equipamiento .equip-title { font-size: 9pt; }
-  .kv-grid { gap: 2px 18px; }
-  .kv { padding: 2px 0; }
-  .kv dt, .kv dd { font-size: 9.5pt; }
+
+  /* page-break-inside: avoid SOLO en .spec (secciones chicas), no en los contenedores
+     grandes - sino una sección que no entra al final de página deja un hueco enorme. */
+  .ficha-head { break-after: avoid-page; page-break-after: avoid; }
+  .spec h2, .equipamiento .equip-title { break-after: avoid-page; page-break-after: avoid; }
+  .spec { break-inside: auto; page-break-inside: auto; }
+  .ficha-secciones, .equipamiento { break-inside: auto; page-break-inside: auto; }
+
+  /* Densidad: gaps más chicos */
+  .ficha-head { padding-bottom: 8px; margin-bottom: 12px; }
+  .ficha-secciones, .equipamiento { gap: 10px; }
+  .equipamiento { margin-top: 12px; padding-top: 10px; }
+  .spec { margin: 0; }
+  .spec h2 { margin: 0 0 4px; padding-bottom: 3px; font-size: 8.5pt; }
+  .equipamiento .equip-title { font-size: 8pt; margin-bottom: 4px; }
+
+  .ficha-head h1 { font-size: 15pt; margin: 0 0 4px; line-height: 1.2; }
+  .ficha-meta { margin-bottom: 2px; font-size: 8.5pt; }
+
+  .kv-grid { gap: 0 16px; }
+  .kv { padding: 1px 0; border-bottom: none; }
+  .kv dt, .kv dd { font-size: 9pt; }
+  .kv dt { color: #444; }
+
   a { color: inherit; text-decoration: none; }
-  .precio { background: transparent; padding: 0; border: 1px solid var(--border); }
+  .precio { background: transparent; padding: 0; border: none; font-size: 10pt; }
 }
 
 @media (max-width: 720px) {
